@@ -3,15 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>小苏的邀请</title>
+  <title>感谢感谢感谢</title>
   <style>
-    /* 页面样式 */
-    body {
-      margin: 0;
-      padding: 0;
-      background: transparent; /* 背景透明 */
-    }
-
     /* 弹窗样式 */
     .modal {
       display: none;
@@ -45,27 +38,117 @@
       background-color: #f44336;
       color: white;
     }
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 10px;
+    }
+    .return-button {
+      margin-top: 20px;
+      background-color: #ccc;
+      color: black;
+    }
   </style>
 </head>
 <body>
-  <!-- 弹窗结构 -->
+  <!-- 第一个弹窗 -->
   <div id="firstModal" class="modal">
     <div class="modal-content">
-      <p>是否接受小苏的感谢局，249局，滑雪局？</p >
+      <p>尝试一下雪上滑行？</p>
       <div class="modal-buttons">
-        <button class="yes" onclick="handleFirstDialog(true)">是</button>
-        <button class="no" onclick="handleFirstDialog(false)">否</button>
+        <button class="yes" onclick="handleFirstDialog(true)">A. 可以一试</button>
+        <button class="no" onclick="handleFirstDialog(false)">B. 不可一试</button>
       </div>
     </div>
   </div>
 
+  <!-- 第二个弹窗（指定行动计划） -->
   <div id="secondModal" class="modal">
     <div class="modal-content">
-      <p>Why refuse？</p >
+      <p>感谢支持！请指定行动计划。</p>
+      <img src=" https://i.postimg.cc/GHb3qgc5/20250214174810.jpg" alt="20250214174810"/></a>
       <div class="modal-buttons">
-        <button class="yes" onclick="handleSecondDialog(true)">故意点错了</button>
-        <button class="no" onclick="handleSecondDialog(false)">不小心点错了</button>
+        <button onclick="handlePlanSelection('2.22')">A. 2.22</button>
+        <button onclick="handlePlanSelection('2.23')">B. 2.23</button>
       </div>
+      <button class="return-button" onclick="returnToFirstDialog()">返回</button>
+    </div>
+  </div>
+
+  <!-- 第三个弹窗（yes madam） -->
+  <div id="thirdModal" class="modal">
+    <div class="modal-content">
+      <p>yes madam！然鄙人能力有限，麻烦再告知我一下。</p>
+      <img src=" https://i.postimg.cc/PCRtft1g/20250214175909.jpg" alt="20250214175909"/></a>
+      <div class="modal-buttons">
+        <button onclick="closeAllModals()">好的</button>
+      </div>
+      <button class="return-button" onclick="returnToSecondDialog()">返回</button>
+    </div>
+  </div>
+
+  <!-- 第四个弹窗（儒家文化） -->
+  <div id="fourthModal" class="modal">
+    <div class="modal-content">
+      <p>作为受到儒家文化熏陶的纯牛马，得人恩果千年记是鄙人从小受到的教育。</p>
+      <div class="modal-buttons">
+        <button class="yes" onclick="handleConfucianChoice(true)">A. 不小心点错了</button>
+        <button class="no" onclick="handleConfucianChoice(false)">B. 故意点错了</button>
+      </div>
+      <button class="return-button" onclick="returnToFirstDialog()">返回</button>
+    </div>
+  </div>
+
+  <!-- 第五个弹窗（不小心点错了） -->
+  <div id="fifthModal" class="modal">
+    <div class="modal-content">
+      <img src=" https://i.postimg.cc/4mwfMvyN/20250214174757.jpg" alt="20250214174757"/></a>
+    </div>
+  </div>
+
+  <!-- 第六个弹窗（为什么故意点错了） -->
+  <div id="sixthModal" class="modal">
+    <div class="modal-content">
+      <p>为什么故意点错了？</p>
+      <img src=" https://i.postimg.cc/4mwfMvyN/20250214174757.jpg" alt="20250214174757"/></a>
+      <div class="modal-buttons">
+        <button class="yes" onclick="handleIntentionalChoice(true)">A. 想看一下会出现什么</button>
+        <button class="no" onclick="handleIntentionalChoice(false)">B. 哎就是玩儿</button>
+      </div>
+      <button class="return-button" onclick="returnToFourthDialog()">返回</button>
+    </div>
+  </div>
+
+  <!-- 第七个弹窗（别看了） -->
+  <div id="seventhModal" class="modal">
+    <div class="modal-content">
+      <p>别看了！鄙人能力有限。</p>
+      <img src=" https://i.postimg.cc/PCRtft1g/20250214175909.jpg" alt="20250214175909"/></a>
+      <div class="modal-buttons">
+        <button onclick="returnToSecondDialog()">A. 好的</button>
+        <button onclick="handlePracticeMore()">B. 菜就多练</button>
+      </div>
+      <button class="return-button" onclick="returnToSixthDialog()">返回</button>
+    </div>
+  </div>
+
+  <!-- 第八个弹窗（收手吧） -->
+  <div id="eighthModal" class="modal">
+    <div class="modal-content">
+      <p>收手吧！</p>
+      <img src=" https://i.postimg.cc/WtTtH188/20250214181739.jpg" alt="20250214181739"/></a>
+      <div class="modal-buttons">
+        <button onclick="returnToSecondDialog()">A. 好</button>
+        <button onclick="returnToSecondDialog()">B. 好好好</button>
+      </div>
+      <button class="return-button" onclick="returnToSixthDialog()">返回</button>
+    </div>
+  </div>
+
+  <!-- 第九个弹窗（菜就多练） -->
+  <div id="ninthModal" class="modal">
+    <div class="modal-content">
+      <img src="https://i.postimg.cc/5HT8XFwV/20250215010519.jpg" alt="20250215010519"/></a>
     </div>
   </div>
 
@@ -78,33 +161,135 @@
     // 处理第一个弹窗的选择
     function handleFirstDialog(isYes) {
       if (isYes) {
-        alert('您选择了“是”，感谢参与！');
-        closeAllModals();
-      } else {
         closeAllModals();
         showSecondDialog();
+      } else {
+        closeAllModals();
+        showFourthDialog();
       }
     }
 
-    // 显示第二个弹窗
+    // 显示第二个弹窗（指定行动计划）
     function showSecondDialog() {
       document.getElementById('secondModal').style.display = 'flex';
     }
 
-    // 处理第二个弹窗的选择
-    function handleSecondDialog() {
+    // 处理行动计划的选择
+    function handlePlanSelection(date) {
       closeAllModals();
-      showFirstDialog(); // 返回第一个弹窗
+      showThirdDialog();
+    }
+
+    // 显示第三个弹窗（yes madam）
+    function showThirdDialog() {
+      document.getElementById('thirdModal').style.display = 'flex';
+    }
+
+    // 返回第一个弹窗
+    function returnToFirstDialog() {
+      closeAllModals();
+      showFirstDialog();
+    }
+
+    // 返回第二个弹窗
+    function returnToSecondDialog() {
+      closeAllModals();
+      showSecondDialog();
+    }
+
+    // 显示第四个弹窗（儒家文化）
+    function showFourthDialog() {
+      document.getElementById('fourthModal').style.display = 'flex';
+    }
+
+    // 处理儒家文化的选择
+    function handleConfucianChoice(isAccidental) {
+      if (isAccidental) {
+        closeAllModals();
+        showFifthDialog();
+        setTimeout(() => {
+          closeAllModals();
+          showSecondDialog();
+        }, 1000); // 1 秒后返回第二个弹窗
+      } else {
+        closeAllModals();
+        showSixthDialog();
+      }
+    }
+
+    // 显示第五个弹窗（不小心点错了）
+    function showFifthDialog() {
+      document.getElementById('fifthModal').style.display = 'flex';
+    }
+
+    // 显示第六个弹窗（为什么故意点错了）
+    function showSixthDialog() {
+      document.getElementById('sixthModal').style.display = 'flex';
+    }
+
+    // 返回第四个弹窗
+    function returnToFourthDialog() {
+      closeAllModals();
+      showFourthDialog();
+    }
+
+    // 处理故意点错了的选择
+    function handleIntentionalChoice(isCurious) {
+      if (isCurious) {
+        closeAllModals();
+        showSeventhDialog();
+      } else {
+        closeAllModals();
+        showEighthDialog();
+      }
+    }
+
+    // 显示第七个弹窗（别看了）
+    function showSeventhDialog() {
+      document.getElementById('seventhModal').style.display = 'flex';
+    }
+
+    // 处理“菜就多练”选项
+    function handlePracticeMore() {
+      closeAllModals();
+      showNinthDialog();
+      setTimeout(() => {
+        closeAllModals();
+        showSecondDialog();
+      }, 1000); // 1 秒后返回第二个弹窗
+    }
+
+    // 显示第九个弹窗（菜就多练）
+    function showNinthDialog() {
+      document.getElementById('ninthModal').style.display = 'flex';
+    }
+
+    // 返回第六个弹窗
+    function returnToSixthDialog() {
+      closeAllModals();
+      showSixthDialog();
+    }
+
+    // 显示第八个弹窗（收手吧）
+    function showEighthDialog() {
+      document.getElementById('eighthModal').style.display = 'flex';
     }
 
     // 关闭所有弹窗
     function closeAllModals() {
       document.getElementById('firstModal').style.display = 'none';
       document.getElementById('secondModal').style.display = 'none';
+      document.getElementById('thirdModal').style.display = 'none';
+      document.getElementById('fourthModal').style.display = 'none';
+      document.getElementById('fifthModal').style.display = 'none';
+      document.getElementById('sixthModal').style.display = 'none';
+      document.getElementById('seventhModal').style.display = 'none';
+      document.getElementById('eighthModal').style.display = 'none';
+      document.getElementById('ninthModal').style.display = 'none';
     }
 
     // 页面加载时显示第一个弹窗
     window.onload = showFirstDialog;
   </script>
 </body>
-</html>
+</html> 
